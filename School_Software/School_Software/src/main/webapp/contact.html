@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>contact us - Ideal School</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+
+      
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+
+            .nav-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background:  rgba(26, 35, 126, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+    }
+
+    .nav-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 20px;
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav-logo a {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #1a237e;
+    }
+
+    .nav-logo img {
+        height: 50px;
+        margin-right: 10px;
+    }
+
+    .nav-logo span {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: white;
+    }
+
+    .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 30px;
+        list-style: none;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: white;
+        font-weight: 500;
+        padding: 8px 0;
+        position: relative;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #1a237e;
+        transition: width 0.3s ease;
+    }
+      
+    .nav-links a:hover,
+    .nav-links a.active {
+        color: #1a237e;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+        width: 100%;
+    }
+
+    .nav-buttons {
+        display: flex;
+        gap: 15px;
+    }
+
+    .nav-btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .nav-btn:not(.primary) {
+        color: #1a237e;
+        border: 1px solid #1a237e;
+    }
+
+    .nav-btn.primary {
+        background: #1a237e;
+        color: white;
+    }
+
+    .nav-btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .nav-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+    }
+
+    .nav-toggle span {
+        width: 30px;
+        height: 3px;
+        background: #1a237e;
+        border-radius: 3px;
+        transition: all 0.3s ease;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+        .nav-toggle {
+            display: flex;
+        }
+
+        .nav-menu {
+            position: absolute;
+            top: 80px;
+            left: 0;
+            width: 100%;
+            background: white;
+            padding: 20px;
+            flex-direction: column;
+            gap: 20px;
+            transform: translateY(-100%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+
+        .nav-menu.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links {
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-buttons {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .nav-btn {
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .nav-wrapper {
+            height: 70px;
+        }
+
+        .nav-logo img {
+            height: 40px;
+        }
+
+        .nav-logo span {
+            font-size: 1.2rem;
+        }
+    }
+
+
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 200px;
+        }
+
+        /* Contact Form Styles */
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-title {
+            color: #1a237e;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #1a237e;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: #1a237e;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: #0d1757;
+            transform: translateY(-2px);
+        }
+
+        /* Contact Info Styles */
+        .contact-info {
+            padding: 40px;
+            background: #1a237e;
+            color: white;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-info::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        }
+
+        .info-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Social Media Links */
+        .social-links {
+            position: relative;
+        }
+
+        .social-title {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon.whatsapp:hover {
+            background: #25D366;
+        }
+
+        .social-icon.facebook:hover {
+            background: #1877F2;
+        }
+
+        .social-icon.instagram:hover {
+            background: #E4405F;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-form,
+            .contact-info {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Nav Container -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <div class="nav-logo">
+                <a href="index.html">
+                    
+                    <span>Ideal School</span>
+                </a>
+            </div>
+
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="adminlogin.html">Admin</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="adminlogin.html">Admin</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="academic.html">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    <li><a href="holiday.html">Holidays</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </nav>
+
+    <div class="contact-container">
+        <!-- Contact Form -->
+        <div class="contact-form">
+            <h2 class="form-title">contact form</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">your name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">your email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">your phone number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">your message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">send message</button>
+            </form>
+        </div>
+
+        <!-- Contact Info and Social Links -->
+        <div class="contact-info">
+            <h2 class="info-title">contact information</h2>
+            
+            <div class="contact-details">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>123, education road, new delhi - 110001</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <p>+91 98765 43210</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@ideal.com</p>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <h3 class="social-title">social media</h3>
+                <div class="social-icons">
+                    <a href="https://wa.me/919876543210" class="social-icon whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://facebook.com/yourschool" class="social-icon facebook" target="_blank">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://instagram.com/yourschool" class="social-icon instagram" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include your footer here -->
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <h3>Ideal School</h3>
+                </div>
+                <p>25 years of providing quality education</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academic.html">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123, Education Road, New Delhi - 110001</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@idealschool.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ideal School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        .footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo h3 {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #ffd700;
+        }
+
+        .footer h4 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .footer-contact .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-contact .contact-info p {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <script>
+        // Mobile Menu Toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html> 

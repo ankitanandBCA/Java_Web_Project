@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>छुट्टियाँ और इवेंट्स - आदर्श विद्यालय</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .holiday-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .holiday-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a237e;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .holiday-list, .event-list {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+
+        .holiday-item, .event-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .holiday-item:last-child, .event-item:last-child {
+            border-bottom: none;
+        }
+
+        .holiday-date, .event-date {
+            font-weight: bold;
+            color: #1a237e;
+        }
+
+        .holiday-description, .event-description {
+            color: #333;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1a237e;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .holiday-list, .event-list {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Ideal School</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="adminlogin.html">Admin</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academic.html">Academics</a></li>
+                <li><a href="admission.html">Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="holiday.html">Holidays</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Include your navbar here -->
+<br><br><br><br>
+    <div class="holiday-container">
+        <h2 class="holiday-title">छुट्टियाँ और इवेंट्स</h2>
+
+        <!-- Holidays Section -->
+        <div class="holiday-list">
+            <h3 class="section-title">छुट्टियाँ</h3>
+            <div class="holiday-item">
+                <span class="holiday-date">15 अगस्त</span>
+                <span class="holiday-description">स्वतंत्रता दिवस</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">2 अक्टूबर</span>
+                <span class="holiday-description">गांधी जयंती</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">25 दिसंबर</span>
+                <span class="holiday-description">क्रिसमस</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">14 नवंबर</span>
+                <span class="holiday-description">बाल दिवस</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">26 जनवरी</span>
+                <span class="holiday-description">गणतंत्र दिवस</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">10 मार्च</span>
+                <span class="holiday-description">होली</span>
+            </div>
+            <div class="holiday-item">
+                <span class="holiday-date">22 अप्रैल</span>
+                <span class="holiday-description">ईद</span>
+            </div>
+        </div>
+
+        <!-- Events Section -->
+        <div class="event-list">
+            <h3 class="section-title">स्कूल इवेंट्स</h3>
+            <div class="event-item">
+                <span class="event-date">5 जनवरी</span>
+                <span class="event-description">सालाना खेलकूद प्रतियोगिता</span>
+            </div>
+            <div class="event-item">
+                <span class="event-date">20 फरवरी</span>
+                <span class="event-description">विज्ञान प्रदर्शनी</span>
+            </div>
+            <div class="event-item">
+                <span class="event-date">15 मार्च</span>
+                <span class="event-description">सांस्कृतिक कार्यक्रम</span>
+            </div>
+            <div class="event-item">
+                <span class="event-date">10 अप्रैल</span>
+                <span class="event-description">पिता-माता बैठक</span>
+            </div>
+            <div class="event-item">
+                <span class="event-date">1 मई</span>
+                <span class="event-description">शिक्षक दिवस समारोह</span>
+            </div>
+            <div class="event-item">
+                <span class="event-date">30 जून</span>
+                <span class="event-description">सालाना पुरस्कार वितरण समारोह</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include your footer here -->
+</body>
+</html> 

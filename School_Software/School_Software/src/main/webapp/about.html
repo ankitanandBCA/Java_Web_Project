@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ideal School</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Ideal School</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="adminlogin.html">Admin</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academic.html">Academics</a></li>
+                <li><a href="admission.html">Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="holiday.html">Holidays</a></li>
+               
+            </ul>
+        </div>
+    </nav>
+
+
+    <section id="about">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80" alt="Our School">
+            </div>
+            <div class="about-content">
+                <h2>About Us</h2>
+                <p>We believe that each child is special. Our goal is to not only educate our students academically but also to develop them holistically.</p>
+                <p>Our Features:</p>
+                <ul>
+                    <li>Experienced and dedicated teachers</li>
+                    <li>Modern teaching facilities</li>
+                    <li>Extensive co-curricular activities</li>
+                    <li>Safe and positive environment</li>
+                </ul>
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <div class="stat-number">1000+</div>
+                        <div class="stat-label">Students</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Teachers</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Years of Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <h3>Ideal School</h3>
+                </div>
+                <p>25 years of providing quality education</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academic.html">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123, Education Road, New Delhi - 110001</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@idealschool.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ideal School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        .footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo h3 {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #ffd700;
+        }
+
+        .footer h4 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .footer-contact .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-contact .contact-info p {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <script src="app.js"></script>
+</body>
+</html>

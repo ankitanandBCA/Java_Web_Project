@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>शैक्षणिक - आदर्श विद्यालय</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Academic Hero Section */
+        .academic-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.9)),
+                        url('path/to/academic-bg.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .academic-hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .academic-hero-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+        }
+
+        /* Programs Section */
+        .programs {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1a237e;
+            margin-bottom: 20px;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #1a237e;
+        }
+
+        .program-content p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .program-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .program-features i {
+            color: #1a237e;
+            margin-right: 10px;
+        }
+
+        /* Faculty Section */
+        .faculty {
+            padding: 100px 0;
+            background: white;
+        }
+
+        .faculty-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .faculty-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .faculty-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            overflow: hidden;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .faculty-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .faculty-info h3 {
+            font-size: 1.2rem;
+            color: #1a237e;
+            margin-bottom: 10px;
+        }
+
+        .faculty-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .faculty-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .faculty-social a {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: #1a237e;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .faculty-social a:hover {
+            background: #ffd700;
+            color: #1a237e;
+            transform: translateY(-3px);
+        }
+
+        /* Facilities Section */
+        .facilities {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .facilities-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .facility-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .facility-image {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .facility-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .facility-card:hover .facility-image img {
+            transform: scale(1.1);
+        }
+
+        .facility-content {
+            padding: 30px;
+        }
+
+        .facility-content h3 {
+            font-size: 1.5rem;
+            color: #1a237e;
+            margin-bottom: 15px;
+        }
+
+        .facility-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .programs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faculty-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .facilities-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .academic-hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .programs-grid,
+            .faculty-grid,
+            .facilities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Footer Styles */
+    
+   
+
+  
+
+    </style>
+</head>
+<body>
+    <!-- Include your navbar here -->
+
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">Ideal School</a>
+            <button class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu">
+                <li><a href="adminlogin.html">Admin</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="academic.html">Academics</a></li>
+                <li><a href="admission.html">Admission</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="holiday.html">Holidays</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+
+
+    <!-- Academic Hero Section -->
+    <section class="academic-hero">
+        <div class="academic-hero-content">
+            <h1>Academic Excellence</h1>
+            <p>Committed to quality education and holistic development</p>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+                <p>Curriculum specially designed for the holistic development of students</p>
+            </div>
+
+            <div class="programs-grid">
+                <!-- Primary Section -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://lirp.cdn-website.com/7bac47c1/dms3rep/multi/opt/role-of-primary-education-1920w.jpg" alt="Primary Education">
+                    </div>
+                    <div class="program-content">
+                        <h3>Primary Education</h3>
+                        <p>Education from Class 1 to 5</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Child-centered education</li>
+                            <li><i class="fas fa-check"></i> Interactive activities</li>
+                            <li><i class="fas fa-check"></i> Personal attention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Middle Section -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://www.harpercollege.edu/academics/education/middle-school/images/middleschooleducation1550x490.jpg" alt="Primary Education">
+                    </div>
+                    <div class="program-content">
+                        <h3>Middle Education</h3>
+                        <p>Education from Class 6 to 8</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Child-centered education</li>
+                            <li><i class="fas fa-check"></i> Interactive activities</li>
+                            <li><i class="fas fa-check"></i> Personal attention</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Secondary Section -->
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://www.umf.maine.edu/academics/wp-content/uploads/sites/3/2018/02/FI-23-0309-064.jpg" alt="Primary Education">
+                    </div>
+                    <div class="program-content">
+                        <h3>Secondary Education</h3>
+                        <p>Education from Class 9 to 12</p>
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Child-centered education</li>
+                            <li><i class="fas fa-check"></i> Interactive activities</li>
+                            <li><i class="fas fa-check"></i> Personal attention</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section class="faculty">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Faculty</h2>
+                <p>Experienced and dedicated teachers</p>
+            </div>
+
+            <div class="faculty-grid">
+                <!-- Faculty Card -->
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="image/pexels-max-fischer-5212320.jpg" alt="Teacher Name">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Rajesh Kumar</h3>
+                        <p>Mathematics Department</p>
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more faculty cards -->
+
+
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="image/pexels-max-fischer-5212320.jpg" alt="Teacher Name">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Rajesh Kumar</h3>
+                        <p>Mathematics Department</p>
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="image/pexels-max-fischer-5212320.jpg" alt="Teacher Name">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Rajesh Kumar</h3>
+                        <p>Mathematics Department</p>
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="faculty-card">
+                    <div class="faculty-image">
+                        <img src="image/pexels-max-fischer-5212320.jpg" alt="Teacher Name">
+                    </div>
+                    <div class="faculty-info">
+                        <h3>Dr. Rajesh Kumar</h3>
+                        <p>Mathematics Department</p>
+                        <div class="faculty-social">
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Facilities Section -->
+    <section class="facilities">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Facilities</h2>
+                <p>Modern educational facilities</p>
+            </div>
+
+            <div class="facilities-grid">
+                <!-- Facility Card -->
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://cdn.shopify.com/s/files/1/0119/9223/6090/articles/List_of_Science_Equipment_s_a_Laboratory_Must_Have.jpg?v=1555557174" alt="Science Lab">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Science Lab</h3>
+                        <p>Modern facilities</p>
+                    </div>
+                </div>
+                <!-- Add more facility cards -->
+
+
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Contemporary_Computer_Lab.jpg" alt="Science Lab">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Computer Lab</h3>
+                        <p>Modern facilities</p>
+                    </div>
+                </div>
+
+
+
+                <div class="facility-card">
+                    <div class="facility-image">
+                        <img src="https://media.cntraveler.com/photos/568ae16e67dc82253d9f72cf/master/pass/Stockholm-Public-Library-Alamy.jpg" alt="Science Lab">
+                    </div>
+                    <div class="facility-content">
+                        <h3>Library</h3>
+                        <p>Modern facilities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Include your footer here -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-info">
+                <div class="footer-logo">
+                    <h3>Ideal School</h3>
+                </div>
+                <p>25 years of providing quality education</p>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="academic.html">Academics</a></li>
+                    <li><a href="admission.html">Admission</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <div class="contact-info">
+                    <p><i class="fas fa-map-marker-alt"></i> 123, Education Road, New Delhi - 110001</p>
+                    <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                    <p><i class="fas fa-envelope"></i> info@idealschool.com</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Ideal School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        .footer {
+            background: #1a237e;
+            color: #fff;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-logo h3 {
+            font-size: 24px;
+            color: #ffd700;
+            margin-bottom: 15px;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .social-link {
+            color: #fff;
+            margin-right: 15px;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .social-link:hover {
+            color: #ffd700;
+        }
+
+        .footer h4 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffd700;
+        }
+
+        .footer-contact .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: #ffd700;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-contact .contact-info p {
+                justify-content: center;
+            }
+        }
+    </style>
+
+    <script src="app.js"></script>
+</body>
+</html> 
