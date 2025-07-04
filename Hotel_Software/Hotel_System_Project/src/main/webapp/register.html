@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Hotel Royal Palace</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">
+            <img src="images/logo.png" alt="">
+            <h1>Hotel Royal Palace</h1>
+        </div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="booking.html" class="booking-btn">Book Now</a></li>
+        </ul>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="auth-section">
+        <div class="auth-container">
+            <div class="auth-image">
+                <img src="images/architecture-chair-contemporary-1001965.jpg" alt="">
+                <div class="auth-overlay">
+                    <h2>Join Our Family</h2>
+                    <p>Create an account to enjoy exclusive benefits and offers</p>
+                </div>
+            </div>
+            <div class="auth-form">
+                <h2>Create Account</h2>
+                <form action="RegUser" method="POST" class="register-form">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="fullname" name="fullname" required placeholder="Enter your full name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="email" name="email" required placeholder="Enter your email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="password" name="password" required placeholder="Create a password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <div class="input-with-icon">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="auth-btn">Create Account</button>
+                   
+                    <p class="auth-link">Already have an account? <a href="booking.html">Login here</a></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>Phone: +91 1234567890</p>
+                <p>Email: info@hotelroyalpalace.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>123, Main Road, City - 123456</p>
+            </div>
+            <div class="footer-section">
+                <h3>Social Media</h3>
+                <div class="social-links">
+                    <a href="#">Facebook</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
