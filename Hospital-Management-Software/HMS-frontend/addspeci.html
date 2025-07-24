@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Specialization</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .btn-submit {
+      background: #4caf50;
+      color: white;
+    }
+
+    .btn-back {
+      background: #f44336;
+      color: white;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 style="margin-bottom: 20px;">Add Doctor Specialization</h2>
+
+    <form id="specializationForm" onsubmit="handle(event)">
+      <div class="form-group">
+        <label for="specialization">Specialization Name:</label>
+        <input
+          type="text"
+          id="specialization"
+        
+          required
+          placeholder="Enter specialization"
+        />
+      </div>
+
+      <div class="button-group">
+        <button
+          type="type"
+          class="btn btn-back"
+          onclick="window.location.href='AdminDashBord.html'"
+        >
+          Back
+        </button>
+        <button type="submit" class="btn btn-submit">
+          Add Specialization
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script>
+  
+   async function handle(event) {
+  event.preventDefault();
+  const spc = document.getElementById("specialization").value;
+
+  const dspc = { specilazion: spc }; // ✅ key name must match backend entity field
+
+  const baseUrl = "http://localhost:8080/doctor/spec";
+
+  try {
+    const response = await fetch(baseUrl, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(dspc),
+    });
+
+    if (response.ok) {
+      alert("Specialization added successfully");
+    } else {
+      alert("Failed to add specialization. Please try again.");
+    }
+  } catch (error) {
+    alert("Error occurred while calling the API.");
+    console.error("API Error:", error);
+  }
+}
+
+  </script>
+</body>
+</html>

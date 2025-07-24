@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Specializations</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .table-container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow-x: auto;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #2196F3;
+            color: white;
+            font-weight: 500;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .btn-back {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #f44336;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .btn-back:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-container">
+        <h2>Specializations List</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Specialization Name</th>
+                </tr>
+            </thead>
+            <tbody id="specTableBody">
+                <!-- Data will be loaded here dynamically -->
+            </tbody>
+        </table>
+
+        <button class="btn-back" onclick="window.location.href='AdminDashBord.html'">
+            Back
+        </button>
+    </div>
+
+    <script>
+        async function loadSpecializations() {
+            try {
+                const response = await fetch('http://localhost:8080/doctor/get');
+                const specializations = await response.json();
+                
+                const tableBody = document.getElementById('specTableBody');
+                tableBody.innerHTML = '';
+
+                specializations.forEach(spec => {
+                    const row = `
+                        <tr>
+                            <td>${spec.specilazion}</td>
+                        </tr>
+                    `;
+                    tableBody.innerHTML += row;
+                });
+            } catch (error) {
+                console.error('Error loading specializations:', error);
+            }
+        }
+
+        // Load specializations when page loads
+        document.addEventListener('DOMContentLoaded', loadSpecializations);
+    </script>
+</body>
+</html>
