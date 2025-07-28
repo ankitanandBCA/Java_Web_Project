@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Cart</title>
+  <style>
+    body { font-family: Arial; background: #f4f4f4; padding: 20px; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin-bottom: 20px; }
+    th, td { padding: 15px; text-align: center; border-bottom: 1px solid #ccc; }
+    th { background-color: #ff6f3c; color: white; }
+    img { width: 80px; height: auto; }
+    .qty-btn { padding: 5px 10px; cursor: pointer; }
+    .total { font-size: 20px; font-weight: bold; text-align: right; }
+  </style>
+</head>
+<body>
+  <h2>Your Cart</h2>
+  <table id="cart-table">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Quantity</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <div class="total">Total: ₹<span id="total">0</span></div>
+
+
+ <div style="margin-top: 30px; text-align: right;">
+    <button onclick="goBackHome()" style="padding: 10px 20px; background-color: #ff6f3c; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer;">
+      ⬅️ Back to Home
+    </button>
+  </div>
+
+
+
+  <script>
+    
+   const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const tbody = document.querySelector("#cart-table tbody");
+    const totalElement = document.getElementById("total");
+
+    function updateTable() {
+      tbody.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        const subtotal = item.price * item.quantity;
+        total += subtotal;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><img src="${item.image}" alt="${item.name}"></td>
+          <td>${item.name}</td>
+          <td>₹${item.price}</td>
+          <td>
+            <button class="qty-btn" onclick="changeQty(${index}, -1)">-</button>
+            ${item.quantity}
+            <button class="qty-btn" onclick="changeQty(${index}, 1)">+</button>
+          </td>
+          <td>₹${subtotal}</td>
+        `;
+        tbody.appendChild(row);
+      });
+
+      totalElement.textContent = total;
+    }
+
+    function changeQty(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity < 1) cart[index].quantity = 1;
+      updateTable();
+    }
+
+    updateTable();
+    localStorage.removeItem("cart"); // clear once loaded
+
+
+
+     function goBackHome() {
+      window.location.href = "index.html"; // Replace with your homepage file if different
+    }
+      
+  </script>
+
+</body>
+</html>
