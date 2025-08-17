@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  body {
+    display: flex;
+    min-height: 100vh;
+  }
+  /* Sidebar styling */
+  .sidebar {
+    width: 220px;
+    background-color: #343a40;
+    color: white;
+    flex-shrink: 0;
+    padding: 20px;
+  }
+  .sidebar .nav-link {
+    color: white;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+  }
+  .sidebar .nav-link i {
+    margin-right: 10px;
+  }
+  .sidebar .nav-link:hover {
+    background-color: #495057;
+    color: #fff;
+  }
+  .content {
+    flex-grow: 1;
+    padding: 30px;
+  }
+  .card {
+    text-align: center;
+    padding: 20px;
+    color: white;
+  }
+  .card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar d-flex flex-column">
+  <h3 class="text-center mb-4">Admin Panel</h3>
+  <ul class="nav nav-pills flex-column">
+    <li class="nav-item">
+      <a href="AdminReg.html" class="nav-link"><i class="fas fa-user-plus"></i> Add Admin</a>
+    </li>
+    <li class="nav-item">
+      <a href="ViewAdmin.html" class="nav-link"><i class="fas fa-users-cog"></i> View Admin</a>
+    </li>
+    <li class="nav-item">
+      <a href="ViewUser.html" class="nav-link"><i class="fas fa-user"></i> View User</a>
+    </li>
+    <li class="nav-item">
+      <a href="AddCourseNotes.html" class="nav-link"><i class="fas fa-plus-square"></i> Add Course/Notes</a>
+    </li>
+    <li class="nav-item">
+      <a href="ViewNotes.html" class="nav-link"><i class="fas fa-book-open"></i> View Notes</a>
+    </li>
+    <li class="nav-item mt-auto">
+      <a href="UserLogin.html" class="nav-link"><i class="fas fa-sign-out-alt"></i> Logout</a>
+    </li>
+  </ul>
+</div>
+
+<!-- Main Content -->
+<div class="content">
+  <h2>Dashboard</h2>
+  <div class="row g-4 mt-3">
+    <!-- Total Admin -->
+    <div class="col-md-4">
+      <div class="card bg-primary">
+        <i class="fas fa-user-shield"></i>
+        <h4>Total Admin</h4>
+        <p id="totalAdmin">0</p>
+      </div>
+    </div>
+
+   <script>
+  async function totalAdmins() {
+    try {
+      const res = await fetch("http://localhost:8080/totaladmin");
+      if (!res.ok) throw new Error("Failed to fetch total notes");
+
+      const total = await res.json(); // ye number return karega
+      document.getElementById("totalAdmin").innerText = total;
+
+    } catch (error) {
+      console.error(error);
+      document.getElementById("totalAdmin").innerText = "0";
+    }
+  }
+
+  // Page load hone par call karo
+  totalAdmins();
+</script>
+    <!-- Total User -->
+    <div class="col-md-4">
+      <div class="card bg-success">
+        <i class="fas fa-users"></i>
+        <h4>Total User</h4>
+        <p id="totalUser">0</p>
+      </div>
+    </div>
+
+<script>
+ async function totalusers() {
+    try {
+      const res = await fetch("http://localhost:8080/totaluser");
+      if (!res.ok) throw new Error("Failed to fetch total notes");
+
+      const total = await res.json(); // ye number return karega
+      document.getElementById("totalUser").innerText = total;
+
+    } catch (error) {
+      console.error(error);
+      document.getElementById("totalUser").innerText = "0";
+    }
+  }
+
+  // Page load hone par call karo
+  totalusers();
+
+
+</script>
+
+
+    <!-- Total Course -->
+    <div class="col-md-4">
+      <div class="card bg-warning text-dark">
+        <i class="fas fa-book"></i>
+        <h4>Total Course</h4>
+        <p id="totalCourse">0</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  async function totalnotescourse() {
+    try {
+      const res = await fetch("http://localhost:8080/totalnotes");
+      if (!res.ok) throw new Error("Failed to fetch total notes");
+
+      const total = await res.json(); // ye number return karega
+      document.getElementById("totalCourse").innerText = total;
+
+    } catch (error) {
+      console.error(error);
+      document.getElementById("totalCourse").innerText = "0";
+    }
+  }
+
+  // Page load hone par call karo
+  totalnotescourse();
+</script>
+
+
+<!-- Optional JavaScript -->
+
+
+</body>
+</html>
