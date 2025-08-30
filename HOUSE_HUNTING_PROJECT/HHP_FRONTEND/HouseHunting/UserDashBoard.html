@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar with Logout & Rooms</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #333;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .navbar button {
+      background: #ff4d4d;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: 0.3s;
+    }
+
+    .navbar button:hover {
+      background: #e60000;
+    }
+
+    /* Rooms Section */
+    .browse-rooms {
+      padding: 20px;
+    }
+
+    .browse-rooms h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    #room-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .room-card {
+      width: 250px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 15px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .room-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .room-card h3 {
+      margin: 10px 0 5px;
+      font-size: 18px;
+    }
+
+    .room-card p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .room-card button {
+      margin-top: 10px;
+      padding: 8px 12px;
+      background: #007bff;
+      border: none;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .room-card button:hover {
+      background: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <div class="navbar">
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- Rooms Section -->
+  <section class="browse-rooms">
+    <h2>Browse Available Rooms</h2>
+    <div id="room-container"></div>
+  </section>
+
+  <script>
+    function logout() {
+      // Redirect to index page
+      window.location.href = "index.html";
+    }
+
+    async function loadRooms() {
+      const roomurl = "http://localhost:8080/AllRooms";
+      try {
+        const response = await fetch(roomurl);
+        const data = await response.json(); // array of rooms
+
+        const container = document.getElementById("room-container");
+        container.innerHTML = ""; // clear old
+
+        data.forEach(room => {
+          const card = document.createElement("div");
+          card.className = "room-card";
+          card.innerHTML = `
+            <img src="data:image/jpeg;base64,${room.image}" alt="Room Image" />
+            <h3>${room.name}</h3>
+            <p>Location: ${room.address}</p>
+            <p>₹ ${room.price}/month</p>
+            <p>Mobile No :  ${room.mobile}</p>
+            <button onclick="viewDetails(${room.id})">View Details</button>
+          `;
+          container.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Error loading rooms:", error);
+      }
+    }
+
+    // Dummy function for details
+    function viewDetails(id) {
+      alert("View details of Room ID: " + id);
+    }
+
+    // Load rooms on page load
+    loadRooms();
+  </script>
+</body>
+</html>

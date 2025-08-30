@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HouseHunting</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="navbar" id="navbar">
+    <div class="logo">HouseHunting</div>
+    
+    <div class="hamburger" onclick="toggleNavbar()">☰</div>
+    
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Browse Rooms</a>
+      <a href="Admin.html">Admin</a>
+      <a href="LandLordRegister.html">Landlord </a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+
+    <div class="auth-buttons">
+    <button onclick="Userlogins()">Login</button>
+    <button onclick="signup()">Sign Up</button>
+    </div>
+    
+  </div>
+
+
+
+
+ <!-- Hero Section -->
+<section class="hero">
+  <div class="overlay">
+    <h1>Find Your Perfect Room, Anywhere</h1>
+    <p>Search verified rooms posted by owners — ideal for bachelors and students</p>
+
+    <div class="search-box">
+      <input type="text" placeholder="Enter your location (e.g. Delhi, Mumbai)" />
+      <button>Search</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+<!-- Room Card with 3 Images -->
+<!-- Browse Rooms Section -->
+<section class="browse-rooms">
+  <h2>Browse Available Rooms</h2>
+
+ <div id="room-container" style="display:flex; flex-wrap:wrap; gap:20px;"></div>
+    <!-- Room Card 1
+    <div class="room-card" id="roomcard">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c" alt="Room Image" />
+      <h3></h3>
+      <p>Location: Saket, Delhi</p>
+      <p>₹ 6,000/month</p>
+      <button>View Details</button>
+    </div>
+     -->
+    <script>
+    async function loadRooms() {
+  const roomurl = "http://localhost:8080/AllRooms";
+  try {
+    const response = await fetch(roomurl);
+    const data = await response.json(); // ye array of rooms hoga
+
+    const container = document.getElementById("room-container");
+    container.innerHTML = ""; // purana clear
+
+    data.forEach(room => {
+      const card = document.createElement("div");
+      card.className = "room-card";
+      card.innerHTML = `
+        <img src="data:image/jpeg;base64,${room.image}" 
+                     width="100" height="80" />
+        <h3>${room.name}</h3>
+        <p>Location: ${room.address}</p>
+        <p>₹ ${room.price}/month</p>
+        <button onclick="viewDetails(${room.id})">View Details</button>
+      `;
+      container.appendChild(card);
+    });
+
+  } catch (error) {
+    console.error("Error loading rooms:", error);
+  }
+}
+loadRooms();
+
+
+
+
+    </script>
+
+    <style>
+    
+.room-card {
+  width: 250px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.room-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.room-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+.room-card p {
+  margin: 5px 0;
+  color: #555;
+}
+.room-card button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.room-card button:hover {
+  background: #0056b3;
+}
+</style>
+  
+    <!-- Room Card 2
+    <div class="room-card">
+      <img src="https://photos.mandarinoriental.com/is/image/MandarinOriental/dmo-The-worlds-most-romantic-hotel-suites-dubai-royal-penthouse-bedroom" alt="Room Image" />
+      <h3>Shared Room in Mumbai</h3>
+      <p>Location: Andheri West, Mumbai</p>
+      <p>₹ 4,500/month</p>
+      <button>View Details</button>
+    </div>
+     -->
+
+    <!-- Room Card 3
+    <div class="room-card">
+      <img src="https://cdn.pixabay.com/photo/2019/03/08/20/14/kitchen-living-room-4043091_1280.jpg" alt="Room Image" />
+      <h3>Furnished Room in Bangalore</h3>
+      <p>Location: Koramangala, Bangalore</p>
+      <p>₹ 7,500/month</p>
+      <button>View Details</button>
+    </div>
+
+     -->
+    <!-- Room Card 4
+    <div class="room-card">
+      <img src="https://cdn.pixabay.com/photo/2020/02/01/06/12/living-room-4809587_1280.jpg" alt="Room Image" />
+      <h3>AC Room in Pune</h3>
+      <p>Location: Kothrud, Pune</p>
+      <p>₹ 5,200/month</p>
+      <button>View Details</button>
+    </div>
+ -->
+    <!-- Add more cards as needed -->
+  </div>
+</section>
+
+
+
+
+
+<!-- About Us Section -->
+<section class="about-section">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2" alt="About HouseHunting" />
+    </div>
+    <div class="about-content">
+      <h2>About HouseHunting</h2>
+      <p>
+        HouseHunting is your one-stop solution for finding comfortable and affordable rooms across India.
+        Whether you're a student, a working professional, or someone relocating to a new city — we make
+        it easy for you to discover and connect with trusted room owners.
+      </p>
+      <p>
+        Our goal is to simplify the process of room hunting, especially for bachelors who struggle to find
+        good living spaces. All listings are verified and curated to ensure safety and convenience.
+      </p>
+      <button>Learn More</button>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- User Review Section -->
+<section class="review-section">
+  <h2>What Our Users Say</h2>
+  <div class="review-container">
+
+    <!-- Review 1 -->
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User 1">
+      <h3>Priya Sharma</h3>
+      <p class="stars">⭐⭐⭐⭐⭐</p>
+      <p>"HouseHunting made my room search super easy. Within 2 days I got a perfect room in Pune!"</p>
+    </div>
+
+    <!-- Review 2 -->
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User 2">
+      <h3>Rohan Mehta</h3>
+      <p class="stars">⭐⭐⭐⭐</p>
+      <p>"The listings were genuine and the interface is clean. Very helpful for bachelors like me."</p>
+    </div>
+
+    <!-- Review 3 -->
+    <div class="review-card">
+      <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User 3">
+      <h3>Amit Yadav</h3>
+      <p class="stars">⭐⭐⭐⭐⭐</p>
+      <p>"I listed my spare room and found a tenant in 3 days. Awesome experience!"</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Contact Us Section -->
+<section class="contact-section" id="contact">
+  <h2>Contact Us</h2>
+  <p>Have a question, suggestion, or need help? We’d love to hear from you!</p>
+
+  <div class="contact-container">
+    <form class="contact-form">
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+
+
+<!-- Footer Section -->
+<footer class="footer-section">
+  <div class="footer-container">
+    <!-- About -->
+    <div class="footer-column">
+      <h3>HouseHunting</h3>
+      <p>Your trusted platform for finding rooms and tenants across India.</p>
+      <div class="social-icons">
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/facebook--v1.png"/></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/instagram-new.png"/></a>
+        <a href="#"><img src="https://img.icons8.com/ios-filled/24/ffffff/twitter.png"/></a>
+      </div>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-column">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Browse Rooms</a></li>
+        <li><a href="#">Post Room</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-column">
+      <h4>Contact Info</h4>
+      <p>Email: support@househunting.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Address: Delhi, India</p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 HouseHunting. All Rights Reserved.</p>
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <script src="app.js">
+  
+  </script>
+
+</body>
+</html>

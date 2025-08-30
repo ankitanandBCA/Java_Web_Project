@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 16px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #007BFF;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Mobile</th>
+      <th>Address</th>
+     
+       <th>Password</th>
+        <th>Action</th>
+    </tr>
+
+  <tbody id="tbody">
+
+  </tbody>
+  </table>
+
+
+
+
+
+<script>
+        async function users() {
+            try {
+                const baseurluser="http://localhost:8080/AllUsers"
+                const response=await fetch(baseurluser);
+                const data=await response.json();
+                document.getElementById("tbody").innerHTML=" ";
+                data.forEach(element => {
+                    const tr=document.createElement('tr');
+                    tr.innerHTML=`
+                     <td>${element.id}</td>
+                    <td>${element.name}</td>
+                    <td>${element.email}</td>
+                    <td>${element.mobile}</td>
+                    <td>${element.address}</td>
+                    <td>${element.password}</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="deletes('${element.id}')">Delete</button>
+                        </td>
+
+
+                    `;
+                    document.getElementById("tbody").appendChild(tr);
+                });
+            } catch (error) {
+                alert(error);
+            }
+            
+          }
+          window.onload=users();
+
+          async function deletes(id){
+    const basedeleturl=`http://localhost:8080/deleteUser/${id}`;
+    try{
+      const response=await fetch(basedeleturl,{
+        method:"DELETE"
+      });if(response.ok)
+      {
+        alert("data delete")
+         window.onload=users();
+      }else{
+        alert("data not delete")
+      }
+
+    }catch(error){
+      alert(error);
+    }
+  }
+      
+            
+</script>
+<script>
+  
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

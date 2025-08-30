@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Table with Back Button</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f9;
+      padding: 20px;
+    }
+
+    .back-btn {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 8px 16px;
+      background: #007BFF;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .back-btn:hover {
+      background: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+
+    th {
+      background: #007BFF;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="javascript:history.back()" class="back-btn">⬅ Back</a>
+
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Password</th>
+      <th>Action</th>
+    </tr>
+
+  <tbody id="tbody">
+
+  </tbody>
+  </table>
+  <!-- Password Update Modal -->
+<div id="updateModal" style="display:none; position:fixed; top:0; left:0; 
+     width:100%; height:100%; background:rgba(0,0,0,0.5); 
+     display:flex; justify-content:center; align-items:center;">
+  <div style="background:#fff; padding:20px; border-radius:8px; width:300px;">
+    <h3>Update Password</h3>
+    <input type="password" id="newPassword" placeholder="Enter new password" style="width:100%; padding:8px; margin-bottom:10px;">
+    <button onclick="savePassword()" style="background:#007BFF; color:#fff; padding:8px 12px; border:none; border-radius:5px;">Save</button>
+    <button onclick="closeModal()" style="background:#dc3545; color:#fff; padding:8px 12px; border:none; border-radius:5px;">Cancel</button>
+  </div>
+</div>
+
+<script>
+   async function name(params) {
+    try {
+    const response = await fetch("http://localhost:8080/AllAdmin");
+    const data = await response.json();
+
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = ""; // clear old data
+
+    data.forEach(admin => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+            <td>${admin.id}</td>
+            <td>${admin.name}</td>
+            <td>${admin.email}</td>
+            <td>${admin.password}</td>
+            <td>
+                <button class="btn btn-primary" onclick="UpdateAdmin(${admin.id})">Edit</button>
+                <button class="btn btn-danger" onclick="deleteAdmin(${admin.id})">Delete</button>
+            </td>
+        `;
+        tbody.appendChild(tr);
+    });
+
+} catch (error) {
+    console.error("Error fetching data:", error);
+}
+
+    
+   }
+
+
+window.onload=name()
+
+        async function deleteAdmin(id){
+    const basedeleturl=`http://localhost:8080/DeleteAdmin/${id}`;
+    try{
+      const response=await fetch(basedeleturl,{
+        method:"DELETE"
+      });if(response.ok)
+      {
+        alert("data delete")
+         window.onload=name();
+      }else{
+        alert("data not delete")
+      }
+
+    }catch(error){
+      alert(error);
+    }
+  }
+
+
+
+
+
+
+
+// update data
+let selectedAdminId = null;
+
+function UpdateAdmin(id) {
+  selectedAdminId = id;
+  document.getElementById("updateModal").style.display = "flex";
+}
+
+function closeModal() {
+  document.getElementById("updateModal").style.display = "none";
+  document.getElementById("newPassword").value = "";
+}
+
+async function savePassword() {
+  const newPassword = document.getElementById("newPassword").value;
+
+  if (!newPassword) {
+    alert("Please enter a new password");
+    return;
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8080/UpdateAdmin/${selectedAdminId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password: newPassword })
+    });
+
+    if (response.ok) {
+      alert("Password updated successfully!");
+      closeModal();
+      name(); // refresh table
+    } else {
+      alert("Failed to update password");
+    }
+  } catch (error) {
+    alert("Error: " + error);
+  }
+}
+
+</script>
+
+
+
+
+
+</body>
+</html>

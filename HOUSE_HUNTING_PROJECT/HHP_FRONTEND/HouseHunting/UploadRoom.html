@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Registration with Navbar</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f0f2f5;
+    }
+
+    /* NAVBAR */
+    .navbar {
+      background-color: #2c3e50;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: #1abc9c;
+    }
+
+    .navbar button {
+      padding: 8px 16px;
+      background-color: #e74c3c;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .navbar button:hover {
+      background-color: #c0392b;
+    }
+
+    /* FORM */
+    .form-container {
+      max-width: 500px;
+      background-color: white;
+      margin: 40px auto;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"],
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    input:focus {
+      border-color: #1abc9c;
+      outline: none;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #1abc9c;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #16a085;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="nav-links">
+      <a href="#">Upload Room</a>
+      <a href="viewroom.html">View Room</a>
+    </div>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <!-- REGISTRATION FORM -->
+  <div class="form-container">
+    <h2>Room Registration</h2>
+    <form onsubmit="registerRoom(event)">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="number" id="mobile" name="mobile" required>
+
+      <label for="address">Address</label>
+      <input type="text" id="address" name="address" required>
+
+      <label for="file">Room Image</label>
+      <input type="file" id="file" name="file" required>
+
+       <label for="price">Price</label>
+      <input type="number" id="price" name="price" required>
+
+       <label for="propertyStatus">Select Property Status:</label><br>
+  <select name="propertyStatus" id="propertyStatus" name="propertyStutas" style="width: 100%; padding: 10px; margin-top: 10px; margin-bottom: 20px;">
+    <option value="not-sold" selected>Not Sold</option>
+    <option value="sold">Sold</option>
+  </select>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function logout() {
+      alert("Logged out successfully!");
+      window.location.href="index.html"
+    }
+
+    async function registerRoom(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const mobile = document.getElementById("mobile").value;
+      const address = document.getElementById("address").value;
+      const fileInput = document.getElementById("file").files[0];
+      const propertyStutas = document.getElementById("propertyStatus").value;
+      const price=document.getElementById("price").value;
+
+      const formData = new FormData();
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("mobile", mobile);
+      formData.append("address", address);
+      formData.append("file", fileInput);
+   formData.append("propertyStutas", propertyStutas);
+   formData.append("price",price);
+
+      try {
+        const response = await fetch("http://localhost:8080/RegisterRoom", {
+          method: "POST",
+          body: formData
+        });
+
+        if (response.ok) {
+          alert("Room registered successfully!");
+        } else {
+          alert("Failed to register room.");
+        }
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    }
+  </script>
+
+</body>
+</html>
