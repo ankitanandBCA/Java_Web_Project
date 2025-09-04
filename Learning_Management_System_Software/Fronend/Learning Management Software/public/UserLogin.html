@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #6c63ff;
+      box-shadow: 0 0 5px rgba(108,99,255,0.5);
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      color: #6c63ff;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #6c63ff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #4e48d8;
+    }
+
+    .back-btn {
+      width: 100%;
+      padding: 12px;
+      background: #999;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .back-btn:hover {
+      background: #666;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .form-footer a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Login</h2>
+    <form onsubmit="login(event)">
+      
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-container">
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <span class="toggle-password" id="togglePassword">Show</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Login</button>
+      <button type="button" class="back-btn" onclick="window.location.href='index.html'">⬅ Back</button>
+
+      <div class="form-footer">
+        <p>Don't have an account? <a href="UserSignUp.html">Register</a></p>
+      </div>
+    </form>
+  </div>
+
+<script>
+function login(event) {
+    event.preventDefault();
+
+    // Get form values
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const data = { email, password };
+
+    const baseurl ="http://localhost:8080/loginUser";
+
+    fetch(baseurl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+    .then(response => {
+        if (!response.ok) throw new Error("Invalid email or password");
+        return response.text();  // backend se role ya "admin"/"user" string milegi
+    })
+    .then(role => {
+        console.log("Logged in as:", role);
+        if (role === "admin") {
+            window.location.href = "admindashboard.html";
+        } else if (role === "user") {
+            window.location.href = "UserDashBord.html";
+        } else {
+            alert("Unknown user type");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Login failed: " + error.message);
+    });
+}
+</script>
+
+
+</body>
+</html>

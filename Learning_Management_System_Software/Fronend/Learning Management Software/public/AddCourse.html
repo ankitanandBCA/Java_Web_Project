@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #dfe9f3, #ffffff);
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      width: 400px;
+      position: relative;
+    }
+
+    .back-btn {
+      display: inline-block;
+      padding: 8px 14px;
+      margin-bottom: 20px;
+      background: #2563eb;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .back-btn:hover { background: #1e40af; }
+
+    h2 {
+      margin: 0 0 20px;
+      text-align: center;
+      font-size: 1.4rem;
+      color: #111827;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #374151;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 0.95rem;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background: #16a34a;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn:hover { background: #15803d; }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <a href="admindashboard.html" class="back-btn">← Back</a>
+    <h2>Add New Course</h2>
+    <form onsubmit="submitCourse(event)">
+      <label for="thumbnail">Course Thumbnail (Image URL)</label>
+      <input type="file" name="file" id="thumbnail" placeholder="Course Image" required>
+
+      <label for="courseName">Course Name</label>
+      <input type="text" name="CourseName" id="courseName" placeholder="Enter course name" required>
+
+      <label for="instructor">Instructor Name</label>
+      <input type="text" name="instructorName" id="instructor" placeholder="Enter instructor name" required>
+
+      <label for="price">Price (₹)</label>
+      <input type="number" name="prize" id="prize" placeholder="Enter price" required>
+
+      <button type="submit" class="btn">Save Course</button>
+    </form>
+  </div>
+
+  <script>
+ async function submitCourse(event) {
+      event.preventDefault();
+      
+      const file=document.getElementById('thumbnail').files[0];
+      const courseName=document.getElementById('courseName').value;
+      const instructor=document.getElementById('instructor').value;
+      const prize=document.getElementById('prize').value;
+
+     const formData = new FormData();
+formData.append("file", file);
+formData.append("courseName", courseName);
+formData.append("instructorName", instructor);
+formData.append("prize", prize);
+
+
+      const formurl="http://localhost:8080/AddCourses";
+
+      try {
+            const response=await fetch(formurl,{
+              method:'POST',
+              body:formData
+            });if(response.ok)
+            {
+              alert("courses add successfully....")
+            }
+            else
+            {
+              alert("something went wrong...")
+            }
+      
+      } catch (error) {
+        alert(error);
+      }
+    
+    }
+  </script>
+</body>
+</html>

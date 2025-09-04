@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LMS Software</title>
+  <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+   <nav>
+    <div class="logo">📚 MyLMS</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#">Notes</a></li>
+      <li><a href="#">Videos</a></li>
+      <li><a href="Asks.html">ASk Anythings</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="buttons">
+      <button class="btn btn-signin" onclick="signin(event)">Sign In</button>
+     
+    </div>
+  </nav>
+
+
+     <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Learn Anytime, Anywhere 📖</h1>
+      <p>Join our LMS platform to access courses, notes, and video lectures. 
+         Boost your skills and achieve your learning goals with us.</p>
+      <button>Get Started</button>
+    </div>
+    <img src="https://static.vecteezy.com/system/resources/previews/001/937/625/large_2x/online-education-application-learning-worldwide-on-phone-mobile-website-background-social-distance-concept-the-classroom-training-course-library-illustration-flat-design-vector.jpg" alt="Learning Image">
+  </section>
+
+
+ <!-- Course Section -->
+  <section class="courses" id="courses">
+    <h2>Java Courses</h2>
+    <div class="course-container">
+      
+      <!-- Course 1 -->
+      <div class="course-card">
+        <img src="https://gicseh.com/images/course/core-java-programming.png" alt="Core Java">
+        <h3>Core Java</h3>
+        <p>Learn the basics of Java programming, OOPs concepts, and essential APIs.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course 2 -->
+      <div class="course-card">
+        <img src="https://www.rajputanawebsolution.com/wp-content/uploads/2016/09/Advanced-java.png" alt="Advanced Java">
+        <h3>Advanced Java</h3>
+        <p>Explore JDBC, Servlets, JSP, and advanced Java development skills.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course 3 -->
+      <div class="course-card">
+        <img src="https://4.bp.blogspot.com/-9kYSwCDRbms/W-qSUvwnFWI/AAAAAAAAEsE/j4EeFEPQHBc-QpxMV9l3gQAaLAuG2WhTgCLcBGAs/s1600/spring-framework.png" alt="Spring">
+        <h3>Spring Framework</h3>
+        <p>Master Spring Core, Spring Boot, and dependency injection for enterprise apps.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course 4 -->
+      <div class="course-card">
+        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjt-h5BnuWvoOMEVwD386k6fd-reYDF0VfY-e4SGoKXMb3mGcgEDtejEnmQDbCIHv09BeozLJEqU7y8iGktyob_4tnPQKlJXUT97qmVD7xQRrzoDKcYQTtq-mtgNjDJ_IB0kScGfndVdaD1dDivojIJ3Eia2hS-3Z4UoiV9o7VIFoavplpyfkWRGNnSlds/w447-h447/spring-boot-1_5zDxm9B.webp" alt="Spring Boot">
+        <h3>Spring Boot</h3>
+        <p>Build REST APIs and microservices with Spring Boot.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course 5 -->
+      <div class="course-card">
+        <img src="https://miro.medium.com/v2/resize:fit:642/1*aay8IzJhX2AYSuIVPvv3uA.png" alt="Hibernate">
+        <h3>Spring Data JPA</h3>
+        <p>Learn ORM concepts and database handling using Spring Data jpa.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course 5 -->
+      <div class="course-card">
+        <img src="https://miro.medium.com/v2/resize:fit:1200/1*-dbPsi8Mdqj5Y0454eGvPQ.png" alt="Hibernate">
+        <h3>Rest API</h3>
+        <p>Learn ORM concepts and database handling using Rest Api.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+      <!-- Course" 5 -->
+      <div class="course-card">
+        <img src="https://www.devopsschool.com/blog/wp-content/uploads/2023/12/image-339-1024x495.png" alt="Hibernate">
+        <h3>Spring MVC</h3>
+        <p>Learn mvc concepts about web Application using spring mvc.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+        
+
+      <div class="course-card">
+        <img src="https://solace.com/wp-content/uploads/2020/05/microservices.png" alt="Hibernate">
+        <h3>MicroService</h3>
+        <p>Learn ORM concepts about Microservice to build a Microservice architecture  project.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+       <div class="course-card">
+        <img src="https://logz.io/wp-content/uploads/2016/01/docker-facebook.png" alt="Hibernate">
+        <h3>Docker</h3>
+        <p>Learn ORM concepts about Deployment using Docker.</p>
+        <button onclick="enroll()">Enroll Now</button>
+      </div>
+
+    </div>
+  </section>
+
+
+
+   <!-- Features Section -->
+  <section class="features">
+    <h2>Why Choose Us?</h2>
+    <div class="feature-container">
+
+      <!-- Feature 1 -->
+      <div class="feature-card">
+        <i class="fas fa-chalkboard-teacher"></i>
+        <h3>24/7</h3>
+        <p>Learn from 24/7.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="feature-card">
+        <i class="fas fa-laptop-code"></i>
+        <h3>Hands-on Learning</h3>
+        <p>Practice with coding exercises, projects, and real case studies.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="feature-card">
+        <i class="fas fa-book-open"></i>
+        <h3>Free Resources</h3>
+        <p>Get free notes, ebooks, and study material for better learning.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      
+
+    </div>
+  </section>
+
+
+
+
+
+   <!-- Mentors Section -->
+  <section class="mentors">
+    <h2>Our Mentors</h2>
+    <div class="mentor-container">
+
+      <!-- Mentor 1 -->
+      <div class="mentor-card">
+        <img src="./ankit.jpg" alt="Mentor">
+        <h3>Ankit Anand</h3>
+        <p>Java Backend Developer</p>
+        <div class="social-icons">
+          <a href="https://www.linkedin.com/in/ankit-anand-620174231/?trk=public_profile-settings_edit-profile-content"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/ankitanandBCA/"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+    <!-- About Section -->
+  <section class="about" id="about">
+    <img src="https://www.pegasusone.com/wp-content/uploads/2018/05/lms-features-learning-management-system.png" alt="About LMS">
+    <div class="about-text">
+      <h2>About Our LMS</h2>
+      <p>
+        Our Learning Management System (LMS) is designed to make education accessible, 
+        interactive, and engaging for everyone. Whether you are a student or a professional, 
+        you can explore top-quality courses, detailed notes, and hands-on projects to 
+        boost your skills. 
+      </p>
+      <p>
+        With expert mentors, structured learning paths, and certifications, our platform 
+        empowers you to achieve your goals and stay ahead in your career journey.
+      </p>
+      <button>Learn More</button>
+    </div>
+  </section>
+
+
+
+
+   <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>Have questions or need help? Fill out the form and our team will get back to you.</p>
+
+    <div class="contact-container">
+      <form>
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" placeholder="Write your message..." required></textarea>
+        </div>
+
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+
+
+   <!-- Footer Section -->
+  <footer>
+    <div class="footer-container">
+
+      <!-- About -->
+      <div class="footer-logo">
+        <h2>📚 MyLMS</h2>
+        <p>
+          A modern Learning Management System designed to provide 
+          high-quality education, expert mentors, and interactive learning 
+          experiences for students worldwide.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Mentors</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-contact">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Bhagalpur,Bihar, India</p>
+        <p><i class="fas fa-envelope">&nbsp;</i>aman2000anand2000@gmail.com</p>
+        <p><i class="fas fa-phone"></i> +91 9341294288</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="footer-bottom">
+      © 2025 MyLMS. All Rights Reserved.
+    </div>
+  </footer>
+
+
+  <script src="app.js"></script>
+  <script>
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyBDicESy2qE_gX5HK6zCw9hmKJwE_QIHw0",
+  authDomain: "lmssoftware-7c720.firebaseapp.com",
+  projectId: "lmssoftware-7c720",
+  storageBucket: "lmssoftware-7c720.firebasestorage.app",
+  messagingSenderId: "105575425636",
+  appId: "1:105575425636:web:0ecfbd6d8631631c55a171"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Videos</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f6f9; margin: 0; padding: 20px; }
+    h2 { color: #333; }
+    .video-card {
+      background: #fff;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    video { width: 50%;
+        height: 300px; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <h2>Course Videos</h2>
+  <div id="videoList"></div>
+
+  <script>
+    async function loadVideos() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseId = urlParams.get("courseid");
+
+      if (!courseId) {
+        document.getElementById("videoList").innerHTML = "<p>No course selected!</p>";
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:8080/videos/byCourse?courseid=${courseId}`);
+        const videos = await response.json();
+
+        const container = document.getElementById("videoList");
+        container.innerHTML = "";
+
+        if (videos.length === 0) {
+          container.innerHTML = "<p>No videos uploaded for this course yet.</p>";
+        }
+
+        videos.forEach(video => {
+          container.innerHTML += `
+            <div class="video-card">
+              <h4>${video.description}</h4>
+              <video controls>
+                <source src="http://localhost:8080/videos/play/${video.id}" type="video/mp4">
+                Your browser does not support video playback.
+              </video>
+            </div>
+          `;
+        });
+      } catch (err) {
+        console.error("Error loading videos:", err);
+      }
+    }
+
+    loadVideos();
+  </script>
+</body>
+</html>

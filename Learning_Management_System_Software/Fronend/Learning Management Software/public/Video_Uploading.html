@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 15px;
+            text-align: left;
+            color: #444;
+        }
+
+        input[type="text"], 
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="file"]:focus {
+            border-color: #007bff;
+        }
+
+        button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 12px;
+            background: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+     <div class="container">
+    <h2>Upload Video</h2>
+    <div id="courseHint" style="margin-bottom:10px; color:#555;"></div>
+
+   <form action="http://localhost:8080/videos/upload" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="courseid" id="courseid">
+
+    <label>Description:</label>
+    <input type="text" name="description" required>
+
+    <label>Choose Video:</label>
+    <input type="file" name="file" accept="video/*" required>
+
+    <button type="submit">Upload</button>
+</form>
+  </div>
+   <script>
+
+  // URL se courseid uthao aur hidden input me daalo
+  const urlParams = new URLSearchParams(window.location.search);
+  document.getElementById("courseid").value = urlParams.get("courseid");
+</script>
+</body>
+</html>

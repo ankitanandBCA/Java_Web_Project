@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0px 6px 15px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, select:focus {
+      border-color: #6c63ff;
+      box-shadow: 0 0 5px rgba(108,99,255,0.5);
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #6c63ff;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #4e48d8;
+    }
+
+    .back-btn {
+      background: #ff4d4d;
+    }
+
+    .back-btn:hover {
+      background: #d93636;
+    }
+
+    .form-footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .form-footer a {
+      color: #6c63ff;
+      text-decoration: none;
+    }
+
+    .form-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Student Registration</h2>
+    <form onsubmit="reg(event)">
+      
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="mobile">Mobile Number</label>
+        <input type="number" id="mobile" name="mobile" placeholder="Enter your mobile number" required pattern="[0-9]{10}">
+      </div>
+
+      <div class="form-group">
+        <label for="branch">Branch</label>
+        <select id="branch" name="branch" required>
+          <option value="">-- Select Branch --</option>
+          <option value="CSE">Computer Science (CSE)</option>
+          <option value="IT">Information Technology (IT)</option>
+          <option value="ECE">Electronics & Communication (ECE)</option>
+          <option value="ME">Mechanical Engineering (ME)</option>
+          <option value="CE">Civil Engineering (CE)</option>
+          <option value="BCA">BCA</option>
+          <option value="MCA">MCA</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div style="position: relative;">
+          <input type="password" id="password" name="password" placeholder="Create a password" required>
+          <span id="togglePassword" 
+                style="position:absolute; right:10px; top:50%; transform:translateY(-50%);
+                       cursor:pointer; color:#6c63ff; font-weight:bold;">
+            Show
+          </span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Register</button>
+      <button type="button" class="btn back-btn" onclick="window.location.href='index.html'">Back</button>
+
+      <div class="form-footer">
+        Already have an account? <a href="UserLogin.html">Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script src="app.js"></script>
+
+
+  <script>
+  function reg(event) {
+    event.preventDefault();
+
+    // Get form values
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const mobile = document.getElementById("mobile").value;
+    const branch = document.getElementById("branch").value;
+    const password = document.getElementById("password").value;
+
+    // Create data object
+    const data = { name, email, mobile, branch, password };
+
+    console.log(JSON.stringify(data));
+
+    const baseurl = "http://localhost:8080/AddUsers";
+
+    // Send POST request
+    fetch(baseurl, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json" // important for JSON
+        },
+        body: JSON.stringify(data) // send JSON data
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok " + response.statusText);
+        }
+        return response.json(); // parse response as JSON
+    })
+    .then(result => {
+        console.log(result);
+        alert("User registered successfully!");
+        window.location.href="/UserLogin.html"
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("Error: " + error.message);
+    });
+}
+
+  </script>
+
+
+
+
+
+
+
+
+</body>
+</html>
