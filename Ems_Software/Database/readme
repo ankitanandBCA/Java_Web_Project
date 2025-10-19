@@ -1,0 +1,70 @@
+
+create database EMS;
+use EMS;
+
+create table emp(
+ id varchar(30),
+name varchar(30),
+email varchar(30),
+addhar varchar(30),
+mobile varchar(30),
+salary varchar(30),
+gender varchar(30));
+
+INSERT INTO emp (id, name, email, addhar, mobile, salary, gender)
+VALUES ('E001', 'Rahul Sharma', 'rahul@example.com', '123456789012', '9876543210', 50000, 'Male');
+
+
+
+	select * from emp;
+create table admin(
+ id varchar(30),
+name varchar(30),
+email varchar(30),
+addhar varchar(30),
+mobile varchar(30),
+salary varchar(30),
+gender varchar(30));
+
+select * from admin;
+
+
+create table applyLeves(
+id int primary key not null auto_increment,
+empId varchar(10),
+
+purpose varchar(30),
+date varchar(20)
+
+
+);
+select * from applyLeves;
+
+
+create table acceptLeves(
+id int primary key not null auto_increment,
+empId varchar(10),
+purpose varchar(30),
+date varchar(20),
+status varchar(10)
+);
+
+select * from acceptLeves;
+
+drop table acceptLeves;
+
+create table deleteLeves(
+id int primary key not null auto_increment,
+empId varchar(10),
+purpose varchar(30),
+date varchar(20),
+status varchar(10)
+);
+
+select * from deleteLeves;
+
+
+
+
+
+
