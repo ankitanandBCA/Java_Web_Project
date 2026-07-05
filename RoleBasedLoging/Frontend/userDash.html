@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>User Dashboard</title>
+</head>
+<body class="bg-gray-100">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen bg-indigo-700 text-white fixed">
+
+        <div class="text-center py-6 text-2xl font-bold border-b border-indigo-500">
+            User Panel
+        </div>
+
+        <nav class="mt-6 space-y-2">
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600 rounded">
+                🏠 Dashboard
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600 rounded">
+                👤 My Profile
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600 rounded">
+                📄 My Orders
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600 rounded">
+                ❤️ Wishlist
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600 rounded">
+                ⚙ Settings
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-red-600 rounded">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64 flex-1">
+
+        <!-- Navbar -->
+        <header class="bg-white shadow px-8 py-4 flex justify-between items-center">
+
+            <h1 class="text-2xl font-bold">
+                Welcome, Ankit 👋
+            </h1>
+
+            <img src="https://ui-avatars.com/api/?name=Ankit" class="w-10 h-10 rounded-full">
+
+        </header>
+
+        <!-- Dashboard -->
+        <main class="p-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-lg font-semibold">My Orders</h3>
+                    <p class="text-4xl font-bold mt-3 text-indigo-600">12</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-lg font-semibold">Wishlist</h3>
+                    <p class="text-4xl font-bold mt-3 text-pink-600">5</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow p-6">
+                    <h3 class="text-lg font-semibold">Notifications</h3>
+                    <p class="text-4xl font-bold mt-3 text-green-600">3</p>
+                </div>
+
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white mt-8 rounded-xl shadow">
+
+                <div class="p-5 border-b">
+                    <h2 class="text-xl font-bold">
+                        Recent Activity
+                    </h2>
+                </div>
+
+                <table class="w-full">
+
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="text-left p-4">Date</th>
+                            <th class="text-left p-4">Activity</th>
+                            <th class="text-left p-4">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr class="border-b">
+                            <td class="p-4">05 July 2026</td>
+                            <td class="p-4">Profile Updated</td>
+                            <td class="p-4 text-green-600">Completed</td>
+                        </tr>
+
+                        <tr class="border-b">
+                            <td class="p-4">04 July 2026</td>
+                            <td class="p-4">New Order Placed</td>
+                            <td class="p-4 text-blue-600">Processing</td>
+                        </tr>
+
+                        <tr>
+                            <td class="p-4">03 July 2026</td>
+                            <td class="p-4">Password Changed</td>
+                            <td class="p-4 text-green-600">Success</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>

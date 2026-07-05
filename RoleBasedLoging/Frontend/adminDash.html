@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Admin Dashboard</title>
+</head>
+
+<body class="bg-gray-100">
+
+<div class="flex">
+
+    <!-- Sidebar -->
+    <aside class="w-64 h-screen bg-gray-900 text-white fixed">
+
+        <div class="text-center py-6 text-2xl font-bold border-b border-gray-700">
+            Admin Panel
+        </div>
+
+        <nav class="mt-6">
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600">
+                🏠 Dashboard
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600">
+                👥 Users
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600">
+                📦 Products
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600">
+                📑 Orders
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-indigo-600">
+                ⚙ Settings
+            </a>
+
+            <a href="#" class="block px-6 py-3 hover:bg-red-600">
+                🚪 Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- Main Content -->
+    <div class="ml-64 flex-1">
+
+        <!-- Navbar -->
+        <header class="bg-white shadow px-8 py-4 flex justify-between items-center">
+
+            <h1 class="text-2xl font-bold">
+                Dashboard
+            </h1>
+
+            <div class="font-semibold">
+                Welcome Admin
+            </div>
+
+        </header>
+
+        <!-- Cards -->
+        <main class="p-8">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <div class="bg-blue-600 text-white p-6 rounded-xl shadow">
+                    <h2 class="text-lg">Total Users</h2>
+                    <p class="text-4xl font-bold mt-2">120</p>
+                </div>
+
+                <div class="bg-green-600 text-white p-6 rounded-xl shadow">
+                    <h2 class="text-lg">Products</h2>
+                    <p class="text-4xl font-bold mt-2">75</p>
+                </div>
+
+                <div class="bg-yellow-500 text-white p-6 rounded-xl shadow">
+                    <h2 class="text-lg">Orders</h2>
+                    <p class="text-4xl font-bold mt-2">48</p>
+                </div>
+
+                <div class="bg-red-600 text-white p-6 rounded-xl shadow">
+                    <h2 class="text-lg">Revenue</h2>
+                    <p class="text-4xl font-bold mt-2">₹45K</p>
+                </div>
+
+            </div>
+
+            <!-- Recent Users Table -->
+            <div class="bg-white rounded-xl shadow mt-10">
+
+                <div class="p-5 border-b">
+                    <h2 class="text-xl font-bold">
+                        Recent Users
+                    </h2>
+                </div>
+
+                <table class="w-full">
+
+                    <thead class="bg-gray-100">
+                        <tr>
+                            <th class="p-4 text-left">Name</th>
+                            <th class="p-4 text-left">Email</th>
+                            <th class="p-4 text-left">Role</th>
+                            <th class="p-4 text-left">Status</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr class="border-b">
+                            <td class="p-4">Ankit</td>
+                            <td class="p-4">ankit@gmail.com</td>
+                            <td class="p-4">Admin</td>
+                            <td class="p-4 text-green-600 font-semibold">Active</td>
+                        </tr>
+
+                        <tr class="border-b">
+                            <td class="p-4">Rahul</td>
+                            <td class="p-4">rahul@gmail.com</td>
+                            <td class="p-4">User</td>
+                            <td class="p-4 text-green-600 font-semibold">Active</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+</div>
+
+</body>
+</html>
